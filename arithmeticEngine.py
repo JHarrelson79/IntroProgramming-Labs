@@ -6,7 +6,7 @@
 def showIntro():
     print("Welcome to the Arithmetic Engine!")
     print("=================================\n")
-    print("Valid commands are 'add', 'mult', 'sub', 'div', and 'quit'.\n")
+    print("Valid commands are 'add', 'mult', 'sub', 'div', 'pow', and 'quit'.\n")
     
 def showOutro():
     print("\nThank you for using the Arithmetic Engine...")
@@ -16,11 +16,7 @@ def doLoop():
     while True:
         cmd =  input("What computation do you want to perform? ").lower().strip()
         try:
-            num1 = int(input("Enter the first number: "))
-        except:
-            print("Bad input.  Starting over.")
-            continue
-        try:
+            num1 = int(input("Enter the first number: "))        
             num2 = int(input("Enter the second number: "))
         except:
             print("Bad input.  Starting over.")
@@ -33,6 +29,13 @@ def doLoop():
                 result = num1 - num2
             elif cmd == "mult":
                 result = num1*num2
+            elif cmd == "pow":
+                if num2 > 159:
+                    raise Exception
+                    print("That number is too big")
+                else:
+                    result = num1**num2
+                
             elif cmd == "div":
                 try:
                     result = num1/num2
